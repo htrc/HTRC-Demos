@@ -16,7 +16,7 @@ echo "Downloading texts from HTRC Data API..."
 htrc download -o $SECURE_VOLUME/volumes htrc-id
 
 echo "Running topic modeling algorithms..."
-topicexplorer init --htrc --name "HTRC Demo Corpus" $SECURE_VOLUME/volumes $SECURE_VOLUME/volumes.ini
+topicexplorer init --htrc --name "HTRC Demo Corpus" $SECURE_VOLUME/volumes/ $SECURE_VOLUME/volumes.ini
 topicexplorer train $SECURE_VOLUME/volumes.ini --iter 50 -k 5 10 20 40 80 --context-type book
 
 echo "Getting metadata..."
