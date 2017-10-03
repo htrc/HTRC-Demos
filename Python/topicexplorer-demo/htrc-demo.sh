@@ -13,14 +13,14 @@ fi
 source activate htrc-demo
 
 echo "Downloading texts from HTRC Data API..."
-htutils download -o $SECURE_VOLUME/volumes htrc-id
+htrc download -o $SECURE_VOLUME/volumes htrc-id
 
 echo "Running topic modeling algorithms..."
 topicexplorer init $SECURE_VOLUME/volumes --htrc --name "HTRC Demo Corpus"
 topicexplorer train $SECURE_VOLUME/volumes.ini --iter 50 -k 5 10 20 40 80 --context-type book
 
 echo "Getting metadata..."
-htutils get-md $SECURE_VOLUME/volumes/
+htrc metadata $SECURE_VOLUME/volumes/ > $SECURE_VOLUME/volumes/metadata.json
 
 echo "Launching topic explorer..."
 topicexplorer launch $SECURE_VOLUME/volumes.ini
