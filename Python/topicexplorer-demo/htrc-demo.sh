@@ -9,9 +9,8 @@ if [ ! -d "$SECURE_VOLUME" ]; then
   exit 1
 fi
 
-# Activate the htrc-demo Python 2.7 environment
-# this is not necessary anymore since topicexplorer has moved to Python 3.5
-# source activate htrc-demo
+echo "Installing topic explorer and htrc library, if not already installed"
+pip install topicexplorer htrc
 
 echo "Downloading texts from HTRC Data API..."
 htrc download -o $SECURE_VOLUME/volumes htrc-id
@@ -25,6 +24,3 @@ htrc metadata $SECURE_VOLUME/volumes/ > $SECURE_VOLUME/volumes/metadata.json
 
 echo "Launching topic explorer..."
 topicexplorer launch $SECURE_VOLUME/volumes.ini
-
-# Deactivate the htrc-demo environment
-# source deactivate
