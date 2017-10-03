@@ -3,12 +3,11 @@
 DATA_HOME=$HOME/HTRC/demo/htrc-data
 SECURE_VOLUME=/media/secure_volume
 
-echo "Installing topic explorer and htrc library, if not already installed"
-pip install htrc
-pip install topicexplorer
-
 if [ ! -d "$SECURE_VOLUME" ]; then
   # Control will enter here if $DIRECTORY doesn't exist.
+  echo "Installing topic explorer and htrc library, if not already installed"
+  pip install htrc
+  pip install topicexplorer
   echo "Please enter Secure Mode before accessing Data API."
   exit 1
 fi
